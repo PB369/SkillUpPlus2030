@@ -1,6 +1,7 @@
 import PageHeader from "@/components/PageHeader/PageHeader";
 import { useAuth } from "@/context/AuthContext";
 import '@/global.css';
+import { FontAwesome5 } from "@expo/vector-icons";
 import FontAwesome6 from '@expo/vector-icons/FontAwesome6';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Redirect, Tabs, usePathname } from "expo-router";
@@ -89,7 +90,7 @@ export default function TabsLayout() {
       />
 
       {/* Educação */}
-      {/* <Tabs.Screen
+      <Tabs.Screen
         name="education"
         options={{
           tabBarIcon: ({ color }) => (
@@ -105,7 +106,7 @@ export default function TabsLayout() {
             </View>
           ),
         }}
-      /> */}
+      />
     </Tabs>
   );
 }

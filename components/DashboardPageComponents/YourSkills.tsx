@@ -94,9 +94,7 @@ export const YourSkills = () => {
   };
 
   return (
-    <View style={styles.container} className="w-11/12">
-      <Text style={styles.title}>Suas Habilidades</Text>
-
+    <View style={styles.container} className="w-full">
       <ScrollView style={{ marginTop: 10 }}>
         {user?.skills && user.skills.length > 0 ? (
           user.skills.map((skill) => (
@@ -211,7 +209,6 @@ export const YourSkills = () => {
 
 const styles = StyleSheet.create({
   container: { flex: 1, padding: 16 },
-  title: { fontSize: 18, fontWeight: "700", marginBottom: 10 },
   skillText: { fontSize: 16 },
   actions: { flexDirection: "row" },
   addButton: {
