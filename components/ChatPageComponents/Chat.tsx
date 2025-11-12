@@ -8,7 +8,7 @@ type Props = {
 
 export default function Chat({ messages }: Props) {
 
-  console.log(messages)
+  // console.log(messages)
   return (
     <ScrollView
       style={styles.chat}
@@ -64,17 +64,17 @@ const styles = StyleSheet.create({
   },
   messageAI: {
     width: "80%",
-    backgroundColor: "#FFCE00",
+    backgroundColor: "#14b8a6",
     borderRadius: 20,
     padding: 10,
     marginTop: 10,
   },
   messageAIText: {
-    color: "#1E1E1E",
+    color: "#000",
   },
   messageAILoading: {
     width: "10%",
-    backgroundColor: "#FFCE00",
+    backgroundColor: "#14b8a6",
     borderRadius: 20,
     padding: 10,
     marginTop: 10,

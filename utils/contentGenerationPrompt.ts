@@ -2,9 +2,9 @@ import { UserType } from "./types/userType";
 
 export const contentGenerationPrompt = (user: UserType | null) => (
   `
-  Você é um assistente financeiro integrado a um aplicativo de um projeto acadêmico.
+  Você é um assistente integrado a um aplicativo de um projeto acadêmico destinado a ajudar trabalhadores e estudantes na requalificação profissional frente às transformações do mercado.
 
-    Considere o seguinte contexto do usuário:
+    Considere as seguintes informações do usuário:
     Nome: ${user?.username}
 
     IMPORTANTE: Responda sempre em JSON (ou seja, quero que sua resposta seja escrita em formato JSON) e a sua resposta deve ser sempre parseável por um JSON.parse() do JavaScript. Não use markdown, não use blocos de código, e não inclua vírgulas após o último item de objetos ou arrays.

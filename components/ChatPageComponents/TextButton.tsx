@@ -20,14 +20,15 @@ export default function TextButton({ text, style, onClick }: Props) {
 
 const styles = StyleSheet.create({
     button: {
-        backgroundColor: "#3C3C3C",
+        backgroundColor: "#14b8a6",
         height: 35,
-        borderRadius: 35,
+        borderRadius: 10,
         flexDirection: "row",
         alignItems: "center",
         justifyContent: "center"
     },
     text: {
-        color: "#F0F0F0",
+        color: "#000",
+        fontWeight: 500,
     }
 });

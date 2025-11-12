@@ -3,12 +3,12 @@ import { getAuth } from "firebase/auth";
 import { getFirestore } from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyB4BR16zkxOGY7Mb0vCKpX_rdqdJQ1wgRo",
-  authDomain: "skill-up-plus-2030.firebaseapp.com",
-  projectId: "skill-up-plus-2030",
-  storageBucket: "skill-up-plus-2030.firebasestorage.app",
-  messagingSenderId: "916209180619",
-  appId: "1:916209180619:web:a9bb22fb9f6f37fa8ba04e"
+  apiKey: "AIzaSyAsjCZrSwP5Qbu4NcHLG21K3jAZ8aeEQGY",
+  authDomain: "skill-up-plus-app.firebaseapp.com",
+  projectId: "skill-up-plus-app",
+  storageBucket: "skill-up-plus-app.firebasestorage.app",
+  messagingSenderId: "667836636349",
+  appId: "1:667836636349:web:08111678fea357dd866bd4"
 };
 
 const app = initializeApp(firebaseConfig);

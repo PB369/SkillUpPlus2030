@@ -13,7 +13,7 @@ export default function TabsLayout() {
   const pathname = usePathname();
 
   const havePathCondition =
-    pathname === "/" || pathname === "/portfolio" || pathname === "/education";
+    pathname === "/" || pathname === "/ia-chat" || pathname === "/education";
 
   const [showEducationBadge, setShowEducationBadge] = useState(false);
 

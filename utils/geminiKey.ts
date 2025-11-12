@@ -1,1 +1,1 @@
-export const GEMINI_API_KEY = "AIzaSyBPeWFDxwNB5aYe5RR_a6lwSpTBj3ULb2Y";
+export const GEMINI_API_KEY = "AIzaSyCB-tLhQOH7sT8VDzaFbsGDwH_2JR9qr40";

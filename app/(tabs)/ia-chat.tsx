@@ -21,9 +21,7 @@ export default function IAChat() {
   const [isResponseLoading, setIsResponseLoading] = useState(false);
   const { user, changeUserProperty, setUser } = useUser();
 
-  const sugestionValues: string[] = ["Explique o que é um ativo financeiro", "Crie uma nova carteira de investimentos", "Liste os ativos que estão rendendo mais", "Crie um curso de iniciantes sobre Renda Fixa"];
-
-  const verticalSugestions: string[] = ["Ativos com meu perfil", "Notícias recentes"];
+  const sugestionValues: string[] = ["Crie um curso sobre Inteligência Artificial", "Quais são as skills mais valorizadas atualmente?", "Liste as profissões que serão tendências no futuro", "Explique os conceitos de Upskilling e Reskilling"];
 
   const [messages, setMessages] = useState<MessageType[]>([{
     role: "model",
@@ -128,15 +126,17 @@ export default function IAChat() {
     }
   };
 
-
   return (
     <KeyboardAvoidingView
-      style={{ flex: 1, backgroundColor: "#0D0D0D" }}
+      style={{ flex: 1 }}
       behavior={"padding"}
     >
         <View style={styles.contentHolder}>
           {chat.length === 0 && <View style={styles.verticalSugestions}>
-            <Text style={styles.sugestionTitle}>Sobre o que você quer conversar hoje?</Text>
+            <View className="justify-center items-center flex-col">
+              <Text className="text-3xl text-black text-center font-medium">Olá, {user?.username}!</Text>
+              <Text className="text-3xl mb-8 text-black text-center font-medium">Como posso te ajudar hoje?</Text>
+            </View>
             {sugestionValues.map((value: string) => {
               return <TextButton
                 key={value}
@@ -147,11 +147,6 @@ export default function IAChat() {
             })}
           </View>}
           {chat.length > 0 && <Chat messages={chat} />}
-          {chat.length === 0 && <View style={styles.horizontalSugestions}>
-            {verticalSugestions.map((value: string) => {
-              return (<TextButton key={value} text={value} style={styles.horizontalSugestionButton} onClick={() => setTextValue(value)} />);
-            })}
-          </View>}
           <ChatTextField value={textValue} onChangeText={setTextValue} onSubmit={send} />
         </View>
     </KeyboardAvoidingView>
@@ -173,7 +168,6 @@ const styles = StyleSheet.create({
   },
   contentHolder: {
     flex: 1,
-    backgroundColor: "#0D0D0D",
     paddingHorizontal: 10,
     paddingTop: 20,
   },
@@ -185,10 +179,4 @@ const styles = StyleSheet.create({
     marginBottom: 10,
     width: "89%"
   },
-  sugestionTitle: {
-    fontSize: 23,
-    marginBottom: 20,
-    color: "#F0F0F0",
-    textAlign: "center"
-  }
 });

@@ -1,6 +1,6 @@
+import { Ionicons } from "@expo/vector-icons";
 import React from "react";
-import { StyleSheet, TextInput, View } from "react-native";
-import IconButton from "./IconButton";
+import { Pressable, StyleSheet, TextInput, View } from "react-native";
 
 type Props = {
   value?: string;
@@ -12,28 +12,26 @@ export default function ChatTextField({ value = "", onChangeText, onSubmit }: Pr
   return (
     <View style={styles.container}>
       <TextInput
-        placeholder="Pergunte alguma coisa"
-        placeholderTextColor='#b1b1b1'
+        placeholder="Pergunte alguma coisa..."
+        placeholderTextColor='#0a0a0a'
         style={styles.textInput}
         onChangeText={onChangeText}
         value={value}
       />
-      <IconButton icon="arrow-right" style={{ backgroundColor: "#FFCE00" }} onClick={() => {
-        if (onSubmit) {
-          onSubmit();
-        }
-      }} />
+      <Pressable onPress={onSubmit}>
+        <Ionicons name="send" size={26} color="black" />
+      </Pressable>
     </View>
   );
 }
-
 
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
     alignItems: "center",
-    backgroundColor: "#1E1E1E",
-    borderRadius: 32,
+    backgroundColor: "#fff",
+    borderWidth: 2,
+    borderRadius: 15,
     paddingHorizontal: 10,
     paddingVertical: 6,
     marginBottom: 10, 
@@ -43,7 +41,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
     paddingVertical: 6,
     paddingHorizontal: 12,
-    color: "#F0F0F0",
+    color: "#000",
     maxHeight: 120,
   },
 });
