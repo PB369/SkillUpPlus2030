@@ -2,12 +2,14 @@ import { YourSkills } from '@/components/DashboardPageComponents/YourSkills';
 import LastCourse from '@/components/EducationalPageComponents/LastCourse';
 import { useUser } from '@/context/UserContext';
 import '@/global.css';
+import { getUser } from '@/services/userService';
 import { CourseCardType } from '@/utils/types/couseCardType';
 import { useRouter } from 'expo-router';
+import { useEffect } from 'react';
 import { ScrollView, Text, View } from "react-native";
 
 export default function Index() {
-  const { user } = useUser();
+  const { user, setUser } = useUser();
   const coursesList = user?.educationalCourses || [];
   const isCourseListEmpty = coursesList.length === 0;
 
@@ -29,9 +31,17 @@ export default function Index() {
     courseCards.find(courseCard => courseCard.isLastAccessed) || courseCards[0];
 
   const courseOverviewPath = `/(tabs)/education/[courseId]/overview`;
-  const courseContentPath = `/(tabs)/education/[courseId]/content;index`;
+  const courseContentPath = `/(tabs)/education/[courseId]/content/index`;
 
   const router = useRouter();
+
+  useEffect(() => {
+  if (user) {
+    getUser(user.id).then(freshUser => {
+      if (freshUser) setUser(freshUser);
+    });
+  }
+}, []);
 
   return (
     <ScrollView contentContainerStyle={{justifyContent: 'center', alignItems: 'center'}} className='w-full'>
@@ -59,6 +69,13 @@ export default function Index() {
             />
           )
         }
+      </View>
+      <View className='w-11/12 flex-col'>
+        <Text className='text-black text-xl font-bold mt-5 mb-3'>Status da sua Jornada</Text>
+        <Text>Qtd. de Cursos Realizados: {user?.userJourney.amountFinishedCourses}</Text>
+        <Text>Qtd. de Acessos Sequênciais: {user?.userJourney.amountStreakDays}</Text>
+        <Text>Qtd. Acesso ao App: {user?.userJourney.amountTotalAccessDays}</Text>
+        <Text>Qtd. de Interações com o Assistente: {user?.userJourney.amountChatMessages}</Text>
       </View>
     </ScrollView>
   );

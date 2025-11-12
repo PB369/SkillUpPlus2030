@@ -9,7 +9,7 @@ type AuthContextType = {
   user: UserType | null;
   loading: boolean;
   signUp: (username: string, email: string, password: string) => Promise<void>;
-  signIn: (email: string, password: string) => Promise<boolean>;
+  signIn: (email: string, password: string) => Promise<UserType | null>;
   signOutUser: () => Promise<void>;
   deleteAccount: () => Promise<void>;
 };
@@ -26,11 +26,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         const userData = await getUser(firebaseUser.uid);
         if (userData) setUser(userData);
         else {
+          const now = new Date();
+          const formattedDate = now.toLocaleDateString("pt-BR");
+
           const newUser: UserType = {
             id: firebaseUser.uid,
             username: firebaseUser.displayName || "",
             email: firebaseUser.email || "",
+            accountCreationDate: formattedDate,
             isAuthenticated: true,
+            userJourney: {
+              amountStreakDays: 0,
+              amountTotalAccessDays: 0,
+              amountFinishedCourses: 0,
+              amountChatMessages: 0,
+              userPoints: 0,
+            },
           };
           await saveUser(newUser);
           setUser(newUser);
@@ -48,11 +59,22 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     try {
       const cred = await createUserWithEmailAndPassword(auth, email, password);
 
-      const newUser = {
+      const now = new Date();
+      const formattedDate = now.toLocaleDateString("pt-BR");
+
+      const newUser: UserType = {
         id: cred.user.uid,
         username,
         email,
-        isAuthenticated: true,
+        accountCreationDate: formattedDate,
+        isAuthenticated: false,
+        userJourney: {
+          amountStreakDays: 0,
+          amountTotalAccessDays: 0,
+          amountFinishedCourses: 0,
+          amountChatMessages: 0,
+          userPoints: 0,
+        },
       };
       
       await setDoc(doc(db, "users", cred.user.uid), newUser);
@@ -64,21 +86,58 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
     }
   };
 
-  const signIn = async (email: string, password: string): Promise<boolean> => {
+  const signIn = async (email: string, password: string): Promise<UserType | null> => {
     try {
       const cred = await signInWithEmailAndPassword(auth, email, password);
       const existingUser = await getUser(cred.user.uid);
+
       if (existingUser) {
-        const loggedUser = { ...existingUser, isAuthenticated: true };
-        await saveUser(loggedUser);
-        setUser(loggedUser);
-        return true;
+        const now = new Date();
+        const today = now.toLocaleDateString("pt-BR");
+
+        let { amountStreakDays, amountTotalAccessDays } = existingUser.userJourney;
+        const lastLoginDate = existingUser.lastAccessDate;
+
+        if (!lastLoginDate) {
+          amountStreakDays = 1;
+          amountTotalAccessDays = 1;
+        } else {
+          const [dia, mes, ano] = lastLoginDate.split("/").map(Number);
+          const lastLogin = new Date(ano, mes - 1, dia);
+
+          const diffInDays = Math.floor(
+            (now.getTime() - lastLogin.getTime()) / (1000 * 60 * 60 * 24)
+          );
+
+          if (diffInDays === 1) {
+            amountStreakDays += 1;
+            amountTotalAccessDays += 1;
+          } else if (diffInDays > 1) {
+            amountStreakDays = 1;
+            amountTotalAccessDays += 1;
+          }
+        }
+
+        const updatedUser: UserType = {
+          ...existingUser,
+          isAuthenticated: true,
+          lastAccessDate: today,
+          userJourney: {
+            ...existingUser.userJourney,
+            amountStreakDays,
+            amountTotalAccessDays,
+          },
+        };
+
+        await setDoc(doc(db, "users", cred.user.uid), updatedUser, { merge: true });
+        await saveUser(updatedUser);
+        setUser(updatedUser);
+        return updatedUser;
       }
-      console.log("existingUser: ", existingUser)
-      return false;
+      return null;
     } catch (error) {
       console.error("Erro ao logar:", error);
-      return false;
+      return null;
     }
   };
 

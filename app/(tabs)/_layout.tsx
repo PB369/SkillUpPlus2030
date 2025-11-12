@@ -15,28 +15,22 @@ export default function TabsLayout() {
   const havePathCondition =
     pathname === "/" || pathname === "/portfolio" || pathname === "/education";
 
-  // 🔴 Estados das bolinhas
   const [showEducationBadge, setShowEducationBadge] = useState(false);
 
-  // 🧮 Armazena contagem anterior para detectar novos itens
   const prevEducationCount = useRef(0);
 
-  // 👀 Detecta quando novos portfolios/cursos são adicionados
   useEffect(() => {
     if (!user) return;
 
     const newEducationCount = user.educationalCourses?.length ?? 0;
 
-    // Se houve aumento, mostra a bolinha
     if (newEducationCount > prevEducationCount.current) {
       setShowEducationBadge(true);
     }
 
-    // Atualiza as contagens
     prevEducationCount.current = newEducationCount;
   }, [user?.educationalCourses]);
 
-  // 🚀 Quando entra nas telas, remove a bolinha correspondente
   useEffect(() => {
     if (pathname === "/education") setShowEducationBadge(false);
   }, [pathname]);
@@ -57,7 +51,6 @@ export default function TabsLayout() {
         headerShown: havePathCondition,
       }}
     >
-      {/* Início */}
       <Tabs.Screen
         name="index"
         options={{
@@ -73,7 +66,6 @@ export default function TabsLayout() {
         }}
       />
 
-      {/* Assistente */}
       <Tabs.Screen
         name="ia-chat"
         options={{
@@ -89,7 +81,6 @@ export default function TabsLayout() {
         }}
       />
 
-      {/* Educação */}
       <Tabs.Screen
         name="education"
         options={{

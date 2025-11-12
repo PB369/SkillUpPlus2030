@@ -23,16 +23,14 @@ export default function SignIn() {
 
   const handleSignIn = async () => { 
     setShowErrorMessage(false);
-
     setIsLoadingSignIn(true);
-    const isSignInSuccessful = await signIn(email, password);
+
+    const loggedUser = await signIn(email, password);
     setIsLoadingSignIn(false);
 
-    if(isSignInSuccessful){
+    if(loggedUser){
       setShowErrorMessage(false);
-      if(user){
-        router.replace('/(tabs)');
-      }
+      router.replace('/(tabs)');
     } else {
       setShowErrorMessage(true);
     }

@@ -27,11 +27,22 @@ export const UserProvider = ({ children }: { children: React.ReactNode }) => {
           if (existingUser) {
             setUser(existingUser);
           } else {
+            const now = new Date();
+            const formattedDate = now.toLocaleDateString('pt-BR');
+
             const newUser: UserType = {
               id: firebaseUser.uid,
               username: firebaseUser.displayName || '',
               email: firebaseUser.email || '',
+              accountCreationDate: formattedDate,
               isAuthenticated: true,
+              userJourney: {
+                amountStreakDays: 0,
+                amountTotalAccessDays: 0,
+                amountFinishedCourses: 0,
+                amountChatMessages: 0,
+                userPoints: 0,
+              },
             };
             await saveUser(newUser);
             setUser(newUser);
