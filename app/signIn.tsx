@@ -1,8 +1,8 @@
 import { useAuth } from "@/context/AuthContext";
 import '@/global.css';
 import { useRouter } from "expo-router";
-import { useState } from "react";
-import { ActivityIndicator, Image, Pressable, Text, TextInput, View } from "react-native";
+import { useEffect, useState } from "react";
+import { ActivityIndicator, Pressable, Text, TextInput, View } from "react-native";
 
 export default function SignIn() {
   const { user, signIn } = useAuth();
@@ -14,6 +14,12 @@ export default function SignIn() {
 
   const [showErrorMessage, setShowErrorMessage] = useState<boolean>(false);
   const [isLoadingSignIn, setIsLoadingSignIn] = useState<boolean>(false);
+
+  useEffect(() => {
+  if (user?.isAuthenticated) {
+    router.replace("/(tabs)");
+  }
+  }, [user]);
 
   const handleSignIn = async () => { 
     setShowErrorMessage(false);
@@ -33,34 +39,34 @@ export default function SignIn() {
   }
 
   return (
-    <View className="flex-1 justify-center items-center bg-black w-full">
+    <View className="flex-1 justify-center items-center bg-teal-500 w-full">
       <View className="flex flex-row justify-center items-center w-11/12 mb-10">
-        <Image source={require('@/assets/images/logos/investyou-logo.png')} style={{width:'50%'}} resizeMode="contain"/>
+        {/* <Image source={require('@/assets/images/logos/investyou-logo.png')} style={{width:'50%'}} resizeMode="contain"/> */}
       </View>
       <View className="w-4/5 justify-center items-center">
-        <Text className="text-white text-2xl font-semibold">Sign In</Text>
+        <Text className="text-black text-2xl font-semibold">Sign In</Text>
         <TextInput onChangeText={setEmail} value={email} placeholder="Email"
-          className="py-2 px-2 my-4 bg-zinc-800 text-white text-base  rounded-md w-full placeholder:text-white"
+          className="py-2 px-2 my-4 bg-white text-black text-base  rounded-md w-full placeholder:text-black"
         />
         <TextInput onChangeText={setPassword} value={password} placeholder="Senha" secureTextEntry
-          className="py-2 px-2 mb-8 bg-zinc-800 text-white text-base  rounded-md w-full placeholder:text-white"
+          className="py-2 px-2 mb-8 bg-white text-black text-base  rounded-md w-full placeholder:text-black"
         />
         <Pressable 
           onPress={handleSignIn} 
-          className={`${isLoadingSignIn ? 'bg-[#d3b022]' : 'bg-yellow-400'} py-2 mb-4 w-full rounded-md`}
+          className={`${isLoadingSignIn ? 'bg-black' : 'bg-black'} py-2 mb-4 w-full rounded-md`}
           disabled={isLoadingSignIn}
         >
           {isLoadingSignIn ? 
-            <ActivityIndicator size={21} color="#000000" /> 
+            <ActivityIndicator size={21} color="#ffffff" /> 
             : 
-            <Text className="text-center text-base font-semibold">Acessar</Text>
+            <Text className="text-white text-center text-base font-semibold">Acessar</Text>
           }
         </Pressable>
         <Pressable onPress={()=>router.replace('/signUp')} className="bg-transparent py-2 mb-4 w-full rounded-md">
-          <Text className="text-center text-base font-semibold text-white underline">Criar minha conta</Text>
+          <Text className="text-center text-base font-semibold text-black underline">Criar minha conta</Text>
         </Pressable>
         {showErrorMessage && (
-            <Text className="text-red-400">Credenciais inválidas! Tente novamente.</Text>
+            <Text className="text-black font-semibold">Credenciais inválidas! Tente novamente.</Text>
         )}
       </View>
     </View>

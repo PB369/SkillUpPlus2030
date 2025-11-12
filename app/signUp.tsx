@@ -2,7 +2,7 @@ import { useAuth } from "@/context/AuthContext";
 import '@/global.css';
 import { useRouter } from "expo-router";
 import { useState } from "react";
-import { ActivityIndicator, Image, Pressable, Text, TextInput, View } from "react-native";
+import { ActivityIndicator, Pressable, Text, TextInput, View } from "react-native";
 
 export default function SignUp() {
   const { signUp } = useAuth();
@@ -46,37 +46,37 @@ export default function SignUp() {
   }
 
   return (
-    <View className="flex-1 justify-center items-center bg-black w-full">
+    <View className="flex-1 justify-center items-center bg-teal-500 w-full">
       <View className="w-4/5 justify-center items-center">
         <View className="flex flex-row justify-center items-center w-11/12 mb-10">
-          <Image source={require('@/assets/images/logos/investyou-logo.png')} style={{width:'50%'}} resizeMode="contain"/>
+          {/* <Image source={require('@/assets/images/logos/investyou-logo.png')} style={{width:'50%'}} resizeMode="contain"/> */}
         </View>
-        <Text className="text-white text-2xl font-semibold">Crie sua conta!</Text>
+        <Text className="text-black text-2xl font-semibold">Crie sua conta!</Text>
         <TextInput onChangeText={setUsername} value={username} placeholder="Nome" textContentType="name" 
-          className="py-2 px-2 my-4 bg-zinc-800 text-white text-base  rounded-md w-full placeholder:text-white"
+          className="py-2 px-2 my-4 bg-white text-black text-base  rounded-md w-full placeholder:text-black"
         />
         <TextInput onChangeText={setEmail} value={email} placeholder="Email" textContentType="emailAddress"
-          className="py-2 px-2 mb-4 bg-zinc-800 text-white text-base  rounded-md w-full placeholder:text-white"
+          className="py-2 px-2 mb-4 bg-white text-black text-base  rounded-md w-full placeholder:text-black"
         />
         <TextInput onChangeText={setConfirmPassword} value={confirmPassword} secureTextEntry placeholder="Senha" textContentType="password"
-          className="py-2 px-2 mb-4 bg-zinc-800 text-white text-base  rounded-md w-full placeholder:text-white" 
+          className="py-2 px-2 mb-4 bg-white text-black text-base  rounded-md w-full placeholder:text-black" 
         />
         <TextInput onChangeText={setPassword} value={password} secureTextEntry placeholder="Confirmar senha" textContentType="password"
-          className="py-2 px-2 mb-8 bg-zinc-800 text-white text-base  rounded-md w-full placeholder:text-white"
+          className="py-2 px-2 mb-8 bg-white text-black text-base  rounded-md w-full placeholder:text-black"
         />
-        <Pressable onPress={handleRegister} className="bg-yellow-400 py-2 mb-4 w-full rounded-md">
+        <Pressable onPress={handleRegister} className="bg-black py-2 mb-4 w-full rounded-md">
           {isLoadingSignUp ? 
             <ActivityIndicator size={21} color="#000000" /> 
             : 
-            <Text className="text-center text-base font-semibold">Criar minha conta</Text>
+            <Text className="text-white text-center text-base font-semibold">Criar minha conta</Text>
           }
         </Pressable>
         <Pressable onPress={()=>router.replace('/signIn')} className="bg-transparent py-2 mb-4 w-full rounded-md">
-          <Text className="text-center text-base font-semibold text-white underline">Já tenho uma conta</Text>
+          <Text className="text-center text-base font-semibold text-black underline">Já tenho uma conta</Text>
         </Pressable>
       </View>
       {showErrorMessage && (
-            <Text className="text-red-400">{errorMessage}</Text>
+            <Text className="text-black font-semibold">{errorMessage}</Text>
         )}
     </View>
   );

@@ -1,5 +1,10 @@
 import { EducationalCourseType } from "./educationalCourseType";
 
+type userSkill = {
+  skillName: string,
+  level: 'Básico' | 'Intermediário' | 'Avançado'
+}
+
 export type UserType = {
   id: string;
   username: string;
@@ -7,4 +12,5 @@ export type UserType = {
   email: string;
   isAuthenticated: boolean;
   educationalCourses?: EducationalCourseType[];
+  skills?: userSkill[];
 };

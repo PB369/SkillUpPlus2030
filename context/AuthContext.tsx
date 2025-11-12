@@ -53,7 +53,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         username,
         email,
         isAuthenticated: true,
-        isFirstAccess: true,
       };
       
       await setDoc(doc(db, "users", cred.user.uid), newUser);
