@@ -1,50 +1,70 @@
-# Welcome to your Expo app 👋
+# 🚀 SkillUpPlus 2030
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+O **SkillUpPlus 2030** é um aplicativo educacional interativo que utiliza **Inteligência Artificial** para ajudar usuários a desenvolver habilidades do futuro — promovendo aprendizado contínuo, personalização de conteúdos e acompanhamento do progresso individual.
 
-## Get started
+Através da integração com o **Google Gemini**, o app oferece uma experiência de chat inteligente, criação automática de cursos personalizados e métricas de progresso que motivam o usuário em sua jornada de aprendizado.
 
-1. Install dependencies
+---
 
-   ```bash
-   npm install
-   ```
+## 🎯 Objetivos do Projeto
 
-2. Start the app
+- Estimular o **upskilling** e **reskilling** de profissionais.  
+- Proporcionar um ambiente de **aprendizado gamificado** com sistema de pontuação e streaks diários.  
+- Gerar **conteúdo educacional personalizado** via IA generativa.  
+- Acompanhar métricas do usuário como dias de acesso, cursos concluídos e mensagens trocadas com a IA.  
+- Promover uma interface moderna, intuiva e com um design leve.
 
-   ```bash
-   npx expo start
-   ```
+---
 
-In the output, you'll find options to open the app in a
+## 🧠 Funcionalidades do Aplicativo
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- 🔐 **Autenticação de usuários** integrado ao Firebase.  
+- 💬 **Chat com Assistente de IA** capaz de criar cursos e dar suporte educacional.  
+- 📚 **Criação e visualização de cursos personalizados** para auxiliar na requalificação profissional.
+- 🧩 **Sistema de progresso e pontuação** para gameficar a experiência. 
+- 📈 **Registro de métricas de uso (dias ativos, streaks, pontos etc.)** para motivar a fidelidade do usuário ao app.
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+---
 
-## Get a fresh project
+## 💎 Integrantes do Grupo
 
-When you're ready, run:
+- RM97937 | Pedro Henrique Fernandes Lô de Barros
+- RM97824 | Vinicius Oliveira de Barros
+
+## 📜 Como executar o projeto
+
+Siga os passos abaixo para rodar o projeto localmente:
+
+### Pré-requisitos
+
+Antes de começar, você vai precisar ter instalado em sua máquina:
+
+- [Node.js](https://nodejs.org)
+- [Expo CLI](https://docs.expo.dev/get-started/installation/)
+- [Git](https://git-scm.com/)
+- Um gerenciador de pacotes como npm ou yarn
+
+### Passo a passo
 
 ```bash
-npm run reset-project
+# 1. Clone o repositório:
+git clone [url-do-repositório]
+
+# 2. Acesse a pasta do projeto:
+cd [nome-repositorio]
+
+# 3. Instale as dependências:
+npm install
+# ou
+yarn install
+
+# 4. Inicie o servidor Expo:
+npx expo start
+# ou
+yarn expo start
+
+# 5. Escolha o ambiente de execução com base no seguinte menu que aparecerá:
+Press a | open Android
+Press i | open iOS simulator
+Press w | open web
 ```
-
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
-
-## Learn more
-
-To learn more about developing your project with Expo, look at the following resources:
-
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
-
-## Join the community
-
-Join our community of developers creating universal apps.
-
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
