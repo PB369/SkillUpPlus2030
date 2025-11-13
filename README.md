@@ -4,7 +4,6 @@ O **SkillUpPlus 2030** é um aplicativo educacional interativo que utiliza **Int
 
 Através da integração com o **Google Gemini**, o app oferece uma experiência de chat inteligente, criação automática de cursos personalizados e métricas de progresso que motivam o usuário em sua jornada de aprendizado.
 
----
 
 ## 🎯 Objetivos do Projeto
 
@@ -14,7 +13,6 @@ Através da integração com o **Google Gemini**, o app oferece uma experiência
 - Acompanhar métricas do usuário como dias de acesso, cursos concluídos e mensagens trocadas com a IA.  
 - Promover uma interface moderna, intuiva e com um design leve.
 
----
 
 ## 🧠 Funcionalidades do Aplicativo
 
@@ -24,12 +22,12 @@ Através da integração com o **Google Gemini**, o app oferece uma experiência
 - 🧩 **Sistema de progresso e pontuação** para gameficar a experiência. 
 - 📈 **Registro de métricas de uso (dias ativos, streaks, pontos etc.)** para motivar a fidelidade do usuário ao app.
 
----
 
 ## 💎 Integrantes do Grupo
 
 - RM97937 | Pedro Henrique Fernandes Lô de Barros
 - RM97824 | Vinicius Oliveira de Barros
+
 
 ## 📜 Como executar o projeto
 
