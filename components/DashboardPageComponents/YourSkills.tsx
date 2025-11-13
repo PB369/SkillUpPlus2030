@@ -31,14 +31,12 @@ export const YourSkills = () => {
   const [skillName, setSkillName] = useState("");
   const [level, setLevel] = useState<Skill["level"]>("Básico");
 
-  // Atualiza e salva usuário
   const updateUserSkills = async (updatedSkills: Skill[]) => {
     if (!user) return;
     const updatedUser: UserType = { ...user, skills: updatedSkills };
     setUser(updatedUser);
   };
 
-  // ✏️ Abrir modal de edição
   const handleEditSkill = (skill: Skill) => {
     setSelectedSkill(skill);
     setSkillName(skill.skillName);
@@ -47,7 +45,6 @@ export const YourSkills = () => {
     setModalVisible(true);
   };
 
-  // ➕ Abrir modal de criação
   const handleAddSkill = () => {
     setSkillName("");
     setLevel("Básico");
@@ -55,14 +52,12 @@ export const YourSkills = () => {
     setModalVisible(true);
   };
 
-  // ❌ Confirmar exclusão
   const handleDeleteSkill = (skill: Skill) => {
     setSelectedSkill(skill);
     setCurrentAction("delete");
     setConfirmModalVisible(true);
   };
 
-  // 📌 Confirmar criação/edição
   const handleConfirmSave = () => {
     if (!user) return;
 
@@ -83,7 +78,6 @@ export const YourSkills = () => {
     setSelectedSkill(null);
   };
 
-  // 🗑️ Confirmar exclusão
   const handleConfirmDelete = () => {
     if (!user || !selectedSkill) return;
     const updatedSkills =
@@ -95,10 +89,10 @@ export const YourSkills = () => {
 
   return (
     <View style={styles.container} className="w-full">
-      <ScrollView style={{ marginTop: 10 }}>
+      <ScrollView>
         {user?.skills && user.skills.length > 0 ? (
           user.skills.map((skill) => (
-            <View key={skill.skillName} className="justify-between flex-row items-center mb-2 p-4 bg-[#f8f9fa] rounded-md">
+            <View key={skill.skillName} className="justify-between flex-row items-center mb-2 p-4 bg-[#f8f9fa] rounded-md border">
               <View>
                 <Text style={styles.skillText}>
                   {skill.skillName} - {skill.level}
