@@ -31,7 +31,7 @@ export default function Index() {
     courseCards.find(courseCard => courseCard.isLastAccessed) || courseCards[0];
 
   const courseOverviewPath = `/(tabs)/education/[courseId]/overview`;
-  const courseContentPath = `/(tabs)/education/[courseId]/content/index`;
+  const courseContentPath = `/(tabs)/education/[courseId]/content`;
 
   const router = useRouter();
 
@@ -63,7 +63,7 @@ export default function Index() {
                   pathname: lastCourseCard.hasBeenStarted
                     ? courseContentPath
                     : courseOverviewPath,
-                  params: { courseId: lastCourseCard.courseId.toString() },
+                  params: { courseId: lastCourseCard.courseId },
                 })
               }
             />
@@ -72,10 +72,10 @@ export default function Index() {
       </View>
       <View className='w-11/12 flex-col'>
         <Text className='text-black text-xl font-bold mt-5 mb-3'>Status da sua Jornada</Text>
-        <Text>Qtd. de Cursos Realizados: {user?.userJourney.amountFinishedCourses}</Text>
-        <Text>Qtd. de Acessos Sequênciais: {user?.userJourney.amountStreakDays}</Text>
-        <Text>Qtd. Acesso ao App: {user?.userJourney.amountTotalAccessDays}</Text>
-        <Text>Qtd. de Interações com o Assistente: {user?.userJourney.amountChatMessages}</Text>
+        <Text className='text-black text-lg font-medium mb-1'>- Qtd. de Cursos Realizados: {user?.userJourney.amountFinishedCourses}</Text>
+        <Text className='text-black text-lg font-medium mb-1'>- Qtd. de Acessos Sequênciais: {user?.userJourney.amountStreakDays}</Text>
+        <Text className='text-black text-lg font-medium mb-1'>- Qtd. Acesso ao App: {user?.userJourney.amountTotalAccessDays}</Text>
+        <Text className='text-black text-lg font-medium mb-1'>- Qtd. de Interações com o Assistente: {user?.userJourney.amountChatMessages}</Text>
       </View>
     </ScrollView>
   );
