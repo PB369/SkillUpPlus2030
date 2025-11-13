@@ -7,17 +7,19 @@ type Props = {
   bgOfFrontBar?: string,
   bgOfBackBar?: string,
   borderRadius?: number,
+  borderWidth?: number,
   marginBottom?: number,
   children?: React.ReactNode,
 }
 
-const ProgressBar = ({progressPercentage, widthInPercentage, height, borderRadius, bgOfFrontBar, bgOfBackBar, marginBottom, children}: Props) => {
+const ProgressBar = ({progressPercentage, widthInPercentage, height, borderRadius, borderWidth, bgOfFrontBar, bgOfBackBar, marginBottom, children}: Props) => {
   const barHeight = height ? height : 12;
-  const barWidth = widthInPercentage ? widthInPercentage : 100
+  const barWidth = widthInPercentage ? widthInPercentage : 100;
   const bgOfFront = bgOfFrontBar ? bgOfFrontBar : '#facc15';
   const bgOfBack = bgOfBackBar ? bgOfBackBar : 'black';
-  const barRadius = borderRadius ? borderRadius : 6
-  const marginOfBSide = marginBottom ? marginBottom : 0
+  const barRadius = borderRadius ? borderRadius : 6;
+  const marginOfBSide = marginBottom ? marginBottom : 0;
+  const borderWid = borderWidth ? borderWidth : 0;
 
   return (
     <View 
@@ -31,6 +33,7 @@ const ProgressBar = ({progressPercentage, widthInPercentage, height, borderRadiu
           height: barHeight, 
           backgroundColor: bgOfBack,
           borderRadius: barRadius,
+          borderWidth: borderWid,
         }}
       >
         <View 

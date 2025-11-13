@@ -79,7 +79,7 @@ export default function CourseLesson() {
   };
 
   return (
-    <View className="flex-1 bg-black justify-between">
+    <View className="flex-1 bg-white justify-between">
       <ScrollView
         className="flex-1 w-full py-6"
         contentContainerStyle={{
@@ -91,12 +91,12 @@ export default function CourseLesson() {
       >
         <View className="flex-col justify-center items-center w-11/12">
           <Pressable onPress={() => router.replace(`/(tabs)/education/${courseId}/content`)} className="self-start w-1/4 py-2 ">
-            <Feather name="arrow-left" size={28} color="white" />
+            <Feather name="arrow-left" size={28} color="black" />
           </Pressable>
-          <Text className="text-white text-2xl font-bold mb-4 text-center">
+          <Text className="text-black text-2xl font-bold mb-4 text-center">
             {currentModuleIndex + 1}. {module.moduleName}
           </Text>
-          <Text className="text-white text-xl mb-6 text-center">
+          <Text className="text-black text-xl mb-6 text-center font-medium">
             {lesson.lessonName}
           </Text>
         </View>
@@ -105,7 +105,7 @@ export default function CourseLesson() {
           {paragraphs.map((p, index) => (
             <Text
               key={index}
-              className="text-white text-lg text-justify flex-1 mb-5"
+              className="text-black text-lg text-justify flex-1 mb-5 font-medium"
             >
               {p.trim()}
             </Text>
@@ -118,15 +118,15 @@ export default function CourseLesson() {
           onPress={goBack}
           disabled={isFirstLesson}
           className={`py-2 px-6 rounded-md ${
-            isFirstLesson ? "bg-neutral-700" : "bg-neutral-500"
+            isFirstLesson ? "bg-neutral-400" : "bg-neutral-300"
           }`}
         >
-          <Text className="text-white text-lg">Voltar</Text>
+          <Text className={`${isFirstLesson ? "text-neutral-300" : "text-black"} text-lg`}>Voltar</Text>
         </Pressable>
 
         <Pressable
           onPress={goNext}
-          className="py-2 px-6 bg-[#FFD700] rounded-md"
+          className="py-2 px-6 bg-[#14b8a6] rounded-md"
         >
           <Text className="text-black text-lg font-semibold">
             {isLastLesson ? "Finalizar" : "Próximo"}

@@ -42,20 +42,20 @@ export default function Education() {
   const courseContentPath = `/(tabs)/education/[courseId]/content`;
 
   return (
-    <View className="flex-1 bg-black justify-center items-center">
+    <View className="flex-1 bg-white justify-center items-center">
       {isCourseListEmpty ? (
         <View className="flex-1 justify-center items-center w-11/12">
-          <Text className="text-white opacity-70 text-center font-bold text-xl">
+          <Text className="text-black opacity-70 text-center font-bold text-xl">
             Nenhum curso criado.
           </Text>
-          <Text className="text-white opacity-70 text-center font-bold text-xl mt-2">
+          <Text className="text-black opacity-70 text-center font-bold text-xl mt-2">
             Peça ao seu assistente de IA para gerar um e comece a aprender!
           </Text>
         </View>
       ) : (
         <>
           <View className="w-11/12">
-            <Text className="text-white text-2xl font-bold mt-6">Último Curso</Text>
+            <Text className="text-black text-2xl font-bold mt-6">Último Curso</Text>
             <LastCourse
               lastCourseCard={lastCourseCard}
               onPress={() =>
@@ -68,7 +68,7 @@ export default function Education() {
               }
             />
 
-            <Text className="text-white text-2xl font-semibold mt-6">Catálogo</Text>
+            <Text className="text-black text-2xl font-semibold mt-6">Catálogo</Text>
             <CoursesFilters filtersList={filtersList} onFilterSelect={setSelectedFilter} />
           </View>
 
@@ -93,7 +93,7 @@ export default function Education() {
                 />
               ))
             ) : (
-              <Text className="text-white font-semibold text-lg text-center mt-4">
+              <Text className="text-black font-semibold text-lg text-center mt-4">
                 Nenhum curso encontrado para este catálogo.
               </Text>
             )}

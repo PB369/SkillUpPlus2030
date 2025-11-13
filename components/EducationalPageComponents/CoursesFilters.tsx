@@ -30,9 +30,9 @@ const CoursesFilters = ({ filtersList, onFilterSelect }: Props) => {
         <Pressable
           key={index}
           onPress={() => handleFilter(index)}
-          className={`${activeIndex === index ? "bg-white" : "bg-neutral-800"} rounded-md px-5 py-2 mr-3`}
+          className={`${activeIndex === index ? "bg-[#14b8a6] border border-[#14b8a6]" : "bg-white border"} rounded-md px-5 py-2 mr-3`}
         >
-          <Text className={`font-medium ${activeIndex === index ? "text-black" : "text-white"}`}>
+          <Text className={`font-medium text-black`}>
             {f}
           </Text>
         </Pressable>

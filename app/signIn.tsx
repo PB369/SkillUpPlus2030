@@ -38,8 +38,9 @@ export default function SignIn() {
 
   return (
     <View className="flex-1 justify-center items-center bg-teal-500 w-full">
-      <View className="flex flex-row justify-center items-center w-11/12 mb-10">
-        {/* <Image source={require('@/assets/images/logos/investyou-logo.png')} style={{width:'50%'}} resizeMode="contain"/> */}
+      <View className="absolute top-1/4 w-full items-center">
+        <Text className="text-black font-bold italic text-2xl w-full text-center mb-2">Bem-vindo ao</Text>
+        <Text className="text-black font-bold italic text-5xl w-full text-center">SkillUpPlus 2030!</Text>
       </View>
       <View className="w-4/5 justify-center items-center">
         <Text className="text-black text-2xl font-semibold">Sign In</Text>
@@ -67,6 +68,7 @@ export default function SignIn() {
             <Text className="text-black font-semibold">Credenciais inválidas! Tente novamente.</Text>
         )}
       </View>
+      <View className="absolute bottom-8" />
     </View>
   );
 }

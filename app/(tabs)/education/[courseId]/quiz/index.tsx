@@ -6,23 +6,23 @@ export default function InitialScreenOfQuiz() {
   const { courseId } = useLocalSearchParams();
 
   return (
-    <View className="flex-1 justify-between items-center bg-black w-full py-10">
+    <View className="flex-1 justify-between items-center bg-white w-full py-10">
       <View className="w-4/5 justify-center items-center mt-10">
-        <Text className="text-white font-bold text-center" style={{ fontSize: 36 }}>
+        <Text className="text-black font-bold text-center" style={{ fontSize: 36 }}>
           Prepare-se para o quiz
         </Text>
-        <Text className="text-neutral-400 text-lg font-medium text-center my-4">
+        <Text className="text-black text-lg font-medium text-center mt-4 mb-14">
           Teste seus conhecimentos respondendo algumas questões e finalize esta jornada de aprendizado.
         </Text>
         <Image
           source={require("@/assets/images/quiz-images/initial-image.jpg")}
-          style={{ width: 340, height: 270, marginBottom: 16 }}
+          style={{ width: 340, height: 270, borderWidth: 1, borderRadius: 10 }}
         />
       </View>
 
-      <View className="w-full items-center mb-10">
+      <View className="w-full items-center">
         <Pressable
-          className="bg-yellow-400 my-2 py-4 w-[75%] rounded-md"
+          className="bg-[#14b8a6] my-2 py-4 w-[75%] rounded-md"
           onPress={() =>
             router.replace({
               pathname: "/(tabs)/education/[courseId]/quiz/quizContent",

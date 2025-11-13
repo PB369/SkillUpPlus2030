@@ -109,6 +109,17 @@ export default function IAChat() {
 
       setMessages(prev => [...prev, aiMessage]);
 
+      if (user) {
+        const updatedUser = {
+          ...user,
+          userJourney: {
+            ...user.userJourney,
+            amountChatMessages: (user.userJourney.amountChatMessages || 0) + 1,
+          },
+        };
+        setUser(updatedUser);
+      }
+
     } catch (err) {
       console.error("Erro ao enviar mensagem para IA:", err);
 

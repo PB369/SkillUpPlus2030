@@ -72,10 +72,11 @@ export default function Index() {
       </View>
       <View className='w-11/12 flex-col'>
         <Text className='text-black text-xl font-bold mt-5 mb-3'>Status da sua Jornada</Text>
-        <Text className='text-black text-lg font-medium mb-1'>- Qtd. de Cursos Realizados: {user?.userJourney.amountFinishedCourses}</Text>
-        <Text className='text-black text-lg font-medium mb-1'>- Qtd. de Acessos Sequênciais: {user?.userJourney.amountStreakDays}</Text>
-        <Text className='text-black text-lg font-medium mb-1'>- Qtd. Acesso ao App: {user?.userJourney.amountTotalAccessDays}</Text>
-        <Text className='text-black text-lg font-medium mb-1'>- Qtd. de Interações com o Assistente: {user?.userJourney.amountChatMessages}</Text>
+        <Text className='text-black text-lg font-medium mb-1'>- Cursos Realizados: {user?.userJourney.amountFinishedCourses} ✔️</Text>
+        <Text className='text-black text-lg font-medium mb-1'>- User Points Conquistados: {user?.userJourney.userPoints} 🚀</Text>
+        <Text className='text-black text-lg font-medium mb-1'>- Acessos Sequênciais: {user?.userJourney.amountStreakDays} 🔥</Text>
+        <Text className='text-black text-lg font-medium mb-1'>- Dias Acessados: {user?.userJourney.amountTotalAccessDays} 📅</Text>
+        <Text className='text-black text-lg font-medium mb-1'>- Interações com o Assistente: {user?.userJourney.amountChatMessages} 💬</Text>
       </View>
     </ScrollView>
   );

@@ -61,18 +61,18 @@ export default function QuizContent() {
   };
 
   return (
-    <View className="flex-1 bg-black justify-between items-center px-6 py-8">
+    <View className="flex-1 bg-white justify-between items-center px-6 py-8">
       <View className="w-full">
         <View className="flex-row justify-between items-center w-full mb-3">
-          <Text className="text-neutral-400 text-lg text-right">
+          <Text className="text-black font-medium text-lg text-right">
             Pergunta {currentIndex + 1}/{questions.length}
           </Text>
           <Pressable onPress={() => router.push(`/(tabs)/education/${courseId}/content`)}>
-            <Ionicons name="close-circle" size={40} color="white" />
+            <Ionicons name="close-circle" size={40} color="#ff0707" />
           </Pressable>
         </View>
 
-        <Text className="text-white text-2xl font-bold mb-6">
+        <Text className="text-black text-2xl font-bold mb-6">
           {currentQuestion.question}
         </Text>
 
@@ -82,15 +82,15 @@ export default function QuizContent() {
             onPress={() => setSelectedOption(index)}
             className={`w-full p-4 my-2 rounded-md border ${
               selectedOption === index
-                ? "bg-yellow-400 border-yellow-400"
-                : "border-neutral-600"
+                ? "bg-[#14b8a6] border-black"
+                : "border-black"
             }`}
           >
             <Text
               className={`text-lg ${
                 selectedOption === index
-                  ? "text-black font-semibold"
-                  : "text-white"
+                  ? "text-black font-medium"
+                  : "text-black font-medium"
               }`}
             >
               {option}
@@ -102,17 +102,17 @@ export default function QuizContent() {
       <View className="flex-row justify-between w-full mt-8">
         <Pressable
           className={`px-6 py-3 rounded-md ${
-            currentIndex === 0 ? "bg-neutral-700" : "bg-neutral-600"
+            currentIndex === 0 ? "bg-neutral-400" : "bg-neutral-300"
           }`}
           disabled={currentIndex === 0}
           onPress={handlePrevious}
         >
-          <Text className="text-white text-lg">Voltar</Text>
+          <Text className={`${currentIndex === 0 ? "text-neutral-300" : "text-black"} text-lg`}>Voltar</Text>
         </Pressable>
 
         <Pressable
           className={`px-6 py-3 rounded-md ${
-            selectedOption === null ? "bg-neutral-700" : "bg-yellow-400"
+            selectedOption === null ? "bg-neutral-400" : "bg-[#14b8a6]"
           }`}
           disabled={selectedOption === null}
           onPress={handleNext}
