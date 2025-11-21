@@ -36,11 +36,12 @@ export default function IAChat() {
     setUser({...user, educationalCourses: updatedEducationalCourses});
   }
 
+  const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
+
   const send = async () => {
     if (!textValue.trim()) return;
 
     try {
-      const ai = new GoogleGenAI({ apiKey: GEMINI_API_KEY });
 
       const userMessage: MessageType = { role: "user", content: textValue };
 
@@ -57,9 +58,11 @@ export default function IAChat() {
         { role: "model", content: "<loading>" }
       ]);
 
+      const lastMessages = updatedMessages.slice(-10);
+
       const aiResponse = await ai.models.generateContent({
         model: "gemini-2.0-flash-lite",
-        contents: updatedMessages.map(m => ({
+        contents: lastMessages.map(m => ({
           role: m.role,
           parts: [{ text: m.content }],
         })),
